@@ -1,5 +1,6 @@
 package pizzarianicks.com.br.delivery.cliente.domain;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -32,13 +33,13 @@ public class Cliente {
 	@NotBlank
 	private String telefone;
 	@NotNull
-	private LocalDateTime dataNascimento;
+	private LocalDate dataNascimento;
 	
 	private LocalDateTime dataHoraDoCadastro;
     private LocalDateTime dataHoraUltimaAlteracao;
     
 	private Cliente(UUID idCliente, @NotBlank String nomeCompleto, @Email @NotBlank String email,
-			@NotBlank String telefone, LocalDateTime dataNascimento) {
+			@NotBlank String telefone, LocalDate dataNascimento) {
 		this.nomeCompleto = nomeCompleto;
 		this.email = email;
 		this.telefone = telefone;

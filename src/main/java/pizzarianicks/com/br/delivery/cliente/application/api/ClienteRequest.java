@@ -1,6 +1,6 @@
 package pizzarianicks.com.br.delivery.cliente.application.api;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import jakarta.persistence.Column;
 import jakarta.validation.constraints.Email;
@@ -19,5 +19,5 @@ public class ClienteRequest {
 	@NotBlank
 	private String telefone;
 	@NotNull
-	private LocalDateTime dataNascimento;
+	private LocalDate dataNascimento;
 }
