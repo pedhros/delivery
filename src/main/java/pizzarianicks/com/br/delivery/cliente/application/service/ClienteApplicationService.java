@@ -1,9 +1,12 @@
 package pizzarianicks.com.br.delivery.cliente.application.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import pizzarianicks.com.br.delivery.cliente.application.api.ClienteListResponse;
 import pizzarianicks.com.br.delivery.cliente.application.api.ClienteRequest;
 import pizzarianicks.com.br.delivery.cliente.application.api.ClienteResponse;
 import pizzarianicks.com.br.delivery.cliente.application.repository.ClienteRepository;
@@ -23,5 +26,12 @@ public class ClienteApplicationService implements ClienteService {
 		return ClienteResponse.builder()
 				.idCliente(cliente.getIdCliente())
 				.build();
+	}
+
+	@Override
+	public List<ClienteListResponse> buscaTodosClientes() {
+		log.info("[inicia] ClienteApplicationService - buscaTodosCliente");
+		log.info("[finaliza] ClienteApplicationService - buscaTodosCliente");
+		return null;
 	}
 }
