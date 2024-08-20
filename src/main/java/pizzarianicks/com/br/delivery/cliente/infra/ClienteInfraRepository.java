@@ -1,13 +1,16 @@
 package pizzarianicks.com.br.delivery.cliente.infra;
 
 import java.util.List;
+import java.util.UUID;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import pizzarianicks.com.br.delivery.cliente.application.repository.ClienteRepository;
 import pizzarianicks.com.br.delivery.cliente.domain.Cliente;
+import pizzarianicks.com.br.delivery.handler.APIException;
 
 @Repository
 @Log4j2
@@ -29,5 +32,14 @@ public class ClienteInfraRepository implements ClienteRepository {
 		List<Cliente> todosClientes = clienteSpringDataJPARepository.findAll();
 		log.info("[finaliza] ClienteInfraRepository - buscaTodosClientes");
 		return todosClientes;
+	}
+
+	@Override
+	public Cliente buscaClienteAtravesId(UUID idCliente) {
+		log.info("[inicia] ClienteInfraRepository - buscaClienteAtravesId");
+		Cliente cliente = clienteSpringDataJPARepository.findById(idCliente)
+				.orElseThrow(() -> APIException.build(HttpStatus.NOT_FOUND, "Cliente não encontrado!"));
+		log.info("[finaliza] ClienteInfraRepository - buscaClienteAtravesId");
+		return cliente;
 	}
 }

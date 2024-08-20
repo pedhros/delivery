@@ -23,7 +23,7 @@ import pizzarianicks.com.br.delivery.cliente.application.api.ClienteRequest;
 public class Cliente {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "id", updatable = false, unique = true, nullable = false)
+	@Column(columnDefinition = "uuid", name = "id", updatable = false, unique = true, nullable = false)
 	private UUID idCliente;
 	@NotBlank
 	private String nomeCompleto;
