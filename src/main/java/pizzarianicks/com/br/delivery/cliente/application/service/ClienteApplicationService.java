@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import pizzarianicks.com.br.delivery.cliente.application.api.ClienteAlteracaoRequest;
 import pizzarianicks.com.br.delivery.cliente.application.api.ClienteDetalhadoResponse;
 import pizzarianicks.com.br.delivery.cliente.application.api.ClienteListResponse;
 import pizzarianicks.com.br.delivery.cliente.application.api.ClienteRequest;
@@ -52,5 +53,14 @@ public class ClienteApplicationService implements ClienteService {
 		Cliente cliente = clienteRepository.buscaClienteAtravesId(idCliente);
 		clienteRepository.deletaCliente(cliente);
 		log.info("[finaliza] ClienteApplicationService - deletaClienteAtravesId");	
+	}
+
+	@Override
+	public void patchAlteraCliente(UUID idCliente, ClienteAlteracaoRequest clienteAlteracaoRequest) {
+		log.info("[inicia] ClienteApplicationService - patchAlteraCliente");
+		Cliente cliente = clienteRepository.buscaClienteAtravesId(idCliente);
+		cliente.altera(clienteAlteracaoRequest);
+		clienteRepository.salva(cliente);
+		log.info("[finaliza] ClienteApplicationService - patchAlteraCliente");
 	}
 }

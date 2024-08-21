@@ -15,6 +15,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import pizzarianicks.com.br.delivery.cliente.application.api.ClienteAlteracaoRequest;
 import pizzarianicks.com.br.delivery.cliente.application.api.ClienteRequest;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
@@ -45,5 +46,12 @@ public class Cliente {
 		this.telefone = clienteRequest.getTelefone();
 		this.dataNascimento = clienteRequest.getDataNascimento();
 		this.dataHoraDoCadastro = LocalDateTime.now();
+	}
+
+	public void altera(ClienteAlteracaoRequest clienteRequest) {
+		this.nomeCompleto = clienteRequest.getNomeCompleto();
+		this.telefone = clienteRequest.getTelefone();
+		this.dataNascimento = clienteRequest.getDataNascimento();
+		this.dataHoraUltimaAlteracao = LocalDateTime.now();	
 	}
 }
