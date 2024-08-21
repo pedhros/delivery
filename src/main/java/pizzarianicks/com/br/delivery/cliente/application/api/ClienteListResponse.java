@@ -1,5 +1,6 @@
 package pizzarianicks.com.br.delivery.cliente.application.api;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -13,6 +14,7 @@ public class ClienteListResponse {
 	private String nomeCompleto;
 	private String email;
 	private String telefone;
+	private LocalDate dataNascimento;
 	
 	public static List<ClienteListResponse> converte(List<Cliente> clientes) {
 		return clientes.stream()
@@ -25,5 +27,6 @@ public class ClienteListResponse {
 		this.nomeCompleto = cliente.getNomeCompleto();
 		this.email = cliente.getEmail();
 		this.telefone = cliente.getTelefone();
+		this.dataNascimento = cliente.getDataNascimento();
 	}
 }
